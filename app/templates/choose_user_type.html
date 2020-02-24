@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Choose user type </h1>
+    <div>
+        <a href="{{ url_for('student_login') }}">Student</a>
+        <a href="{{url_for('faculty_login')}}">Faculty</a>
+    </div>
+{% endblock %}

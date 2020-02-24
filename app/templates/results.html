@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<title>Leaves</title>
+
+<form>
+    <button formaction="{{ url_for('student_dashboard') }}">Return to dashboard</button>
+</form>
+<br>
+<h4>List of leaves applied for:</h4>
+<br>
+{{ table }}
+</html>
+{% endblock %}
+

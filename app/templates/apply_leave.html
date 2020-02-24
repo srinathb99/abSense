@@ -1,0 +1,62 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - abSense</title>
+        {% else %}
+        <title>abSense</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Apply leave</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }} : {{name}}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.facultyusername.label }}<br>
+                {{ form.facultyusername(size=32) }}<br>
+                {% for error in form.facultyusername.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.fromdate.label }}<br>
+                {{ form.fromdate(size=32) }}<br>
+                {% for error in form.fromdate.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.todate.label }}<br>
+                {{ form.todate(size=32) }}<br>
+                {% for error in form.todate.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.reason.label }}<br>
+                {{ form.reason(size=32) }}<br>
+                {% for error in form.reason.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.typeofleave.label }}<br>
+                {{ form.typeofleave(size=3) }}<br>
+                {% for error in form.typeofleave.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+            <button formaction="{{ url_for('student_dashboard') }}">Return to dashboard</a>
+        </form>
+    </body>
+</html>
+{% endblock %}
