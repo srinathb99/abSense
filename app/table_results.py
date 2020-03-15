@@ -1,7 +1,8 @@
 from flask_table import Table, Col
  
 class Results(Table):
-    id = Col('ID', show=False)
+    classes = ['table', 'table-striped', 'table-bordered', 'table-condensed', 'table-hover']
+    id = Col('ID')
     student_username = Col('Student')
     faculty_username = Col('Faculty', show=False)
     from_date = Col('From')

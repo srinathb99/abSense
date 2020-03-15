@@ -47,3 +47,7 @@ class leaves(db.Model):
     reason = db.Column(db.String(64), index = True, unique = False)
     type_of_leave = db.Column(db.String(64), index = True, unique = False)
     leave_status = db.Column(db.String(20), index = True, unique = False)
+
+class advisor(db.Model):
+    student_username = db.Column(db.String(64), primary_key = True)
+    faculty_username = db.Column(db.String(64), index = True, unique = False)

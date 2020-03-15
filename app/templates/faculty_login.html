@@ -1,23 +1,13 @@
 {% extends "base.html" %}
-
-{% block content %}
-    <h1>Faculty Log In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+<br>
+<body style="background-color:#faf5e4";>
+    <h2 style="color:blue;text-align:center; font-family: 'Inter', sans-serif;">Faculty Log In</h2>
+    <br>
+    <div class = "container">
+        {{ wtf.quick_form(form) }}
+    </div>
+</body>
 {% endblock %}

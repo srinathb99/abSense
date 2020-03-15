@@ -1,5 +1,7 @@
-{% extends 'bootstrap/base.html' %}
-{% block content %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends "base.html" %}
+{% block app_content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 <html>
     <head>
         {% if title %}
@@ -8,55 +10,18 @@
         <title>abSense</title>
         {% endif %}
     </head>
-    <body>
-        <h1>Apply leave</h1>
-        <form action="" method="post" novalidate>
-            {{ form.hidden_tag() }}
-            <p>
-                {{ form.username.label }} : {{name}}<br>
-                {{ form.username(size=32) }}<br>
-                {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.facultyusername.label }}<br>
-                {{ form.facultyusername(size=32) }}<br>
-                {% for error in form.facultyusername.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.fromdate.label }}<br>
-                {{ form.fromdate(size=32) }}<br>
-                {% for error in form.fromdate.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.todate.label }}<br>
-                {{ form.todate(size=32) }}<br>
-                {% for error in form.todate.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.reason.label }}<br>
-                {{ form.reason(size=32) }}<br>
-                {% for error in form.reason.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.typeofleave.label }}<br>
-                {{ form.typeofleave(size=3) }}<br>
-                {% for error in form.typeofleave.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>{{ form.submit() }}</p>
-            <button formaction="{{ url_for('student_dashboard') }}">Return to dashboard</a>
-        </form>
+    <body style="background-color:#faf5e4";>
+        <div class = "container">
+        <h2 style="color:blue;text-align:center;font-family: 'Inter', sans-serif;">Apply leave</h2>
+        <br>
+        <h4 style="text-align:center;font-family: 'Inter', sans-serif;">Student : {{studentname}}</h4>
+        <br>
+        <h4 style="text-align:center;font-family: 'Inter', sans-serif;">Faculty : {{facultyname}}</h4>
+        <br>
+        {{ wtf.quick_form(form) }}
+        <br>
+        <a href="{{ url_for('student_dashboard') }}" class="btn btn-primary" role="button">Return to dashboard</a>
+    </div>
     </body>
 </html>
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block app_content %}
+
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - abSense</title>
+        {% else %}
+        <title>abSense</title>
+        {% endif %}
+    </head>
+    <body style="background-color:#faf5e4";>
+        <div class = "container">
+            <h3 style = "font-family: 'Inter', sans-serif;">Hey there, {{name}}!</h3>
+            <a href="{{ url_for('view_leave_faculty') }}" class="btn btn-primary" role="button">View leave</a>
+        </div>
+        
+    </body>
+</html>
+{% endblock %}

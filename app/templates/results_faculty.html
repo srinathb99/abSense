@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block app_content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+<html>
+<title>Leaves</title>
+
+<body style="background-color:#faf5e4";>
+<br>
+<div class = "container">
+<h4 style = "font-family: 'Inter', sans-serif;">List of leaves applied to you:</h4>
+<br>
+{{ table }}
+<br>
+<a href="{{ url_for('student_dashboard') }}" class="btn btn-primary" role="button">Return to dashboard</a>
+</div>
+</body>
+</html>
+{% endblock %}
+

@@ -8,8 +8,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 class LeaveForm(FlaskForm):
-    username = HiddenField('Username', default="test", render_kw={'disabled':''})
-    facultyusername = StringField('Faculty username: ', validators=[DataRequired()])
+    username = StringField('Username', render_kw={'disabled':''})
+    facultyusername = StringField('Faculty username: ', render_kw={'disabled':''})
     fromdate = DateField('From (yyyy-mm-dd): ', validators=[DataRequired()])
     todate = DateField('To (yyyy-mm-dd): ', validators=[DataRequired()])
     reason = StringField('Reason: ', validators=[DataRequired()])

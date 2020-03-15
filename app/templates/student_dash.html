@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% block app_content %}
 
-{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 <html>
     <head>
         {% if title %}
@@ -9,11 +10,11 @@
         <title>abSense</title>
         {% endif %}
     </head>
-    <body>
-        <div>
-            <h3>Hey there, {{name}}!</h3>
-            <a href="{{ url_for('apply_leave') }}"><h4>Apply leave</h4></a>
-            <a href="{{ url_for('view_leave') }}"><h4>View leave</h4></a>
+    <body style="background-color:#faf5e4";>
+        <div class = "container">
+            <h3 style = "font-family: 'Inter', sans-serif;">Hey there, {{name}}!</h3>
+            <a href="{{ url_for('apply_leave') }}" class="btn btn-primary" role="button">Apply leave</a>
+            <a href="{{ url_for('view_leave') }}" class="btn btn-primary" role="button">View leave</a>
         </div>
         
     </body>

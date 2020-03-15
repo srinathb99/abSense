@@ -1,10 +1,9 @@
 {% extends 'bootstrap/base.html' %}
-
 {% block title %}
     {% if title %}{{ title }} - abSense{% else %}Welcome to abSense{% endif %}
 {% endblock %}
 {% block navbar %}
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -19,6 +18,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{url_for('student_dashboard')}}">Student dashboard</a></li>
+                    <li><a href="{{url_for('faculty_dashboard')}}">Faculty dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -39,13 +39,16 @@
         {% if messages %}
         <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ message }}
+            </div>
+            
             {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
 
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}HI{% endblock %}
+        {% block app_content %}{% endblock %}
     </div>
 {% endblock %}

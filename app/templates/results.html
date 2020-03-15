@@ -1,16 +1,19 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% block app_content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 <html>
 <title>Leaves</title>
 
-<form>
-    <button formaction="{{ url_for('student_dashboard') }}">Return to dashboard</button>
-</form>
+<body style="background-color:#faf5e4";>
 <br>
-<h4>List of leaves applied for:</h4>
+<div class = "container">
+    <h4 style = "font-family: 'Inter', sans-serif;">Applied leaves:</h4>
 <br>
 {{ table }}
+<br>
+<a href="{{ url_for('student_dashboard') }}" class="btn btn-primary" role="button">Return to dashboard</a>
+</div>
+</body>
 </html>
 {% endblock %}
 
