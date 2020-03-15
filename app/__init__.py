@@ -6,7 +6,7 @@ from config import Config
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)

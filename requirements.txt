@@ -52,7 +52,6 @@ pathlib2==2.3.5
 pluggy==0.13.1
 py==1.8.1
 pycrypto==2.6.1
-PyGObject==3.34.0
 PyJWT==1.7.0
 pyOpenSSL==19.0.0
 pyparsing==2.4.6
