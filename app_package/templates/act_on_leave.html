@@ -1,0 +1,23 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends "base.html" %}
+{% block app_content %}
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - abSense</title>
+        {% else %}
+        <title>abSense</title>
+        {% endif %}
+    </head>
+    <body style="background-color:#faf5e4";>
+        <div class = "container">
+        <h2 style="color:blue;text-align:center;font-family: 'Inter', sans-serif;">Act on Leave</h2>
+        <br>
+        {{ wtf.quick_form(form) }}
+        <br>
+        <a href="{{ url_for('faculty_dashboard') }}" class="btn btn-primary" role="button">Return to dashboard</a>
+    </div>
+    </body>
+</html>
+{% endblock %}

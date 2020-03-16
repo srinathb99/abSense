@@ -19,3 +19,8 @@ class LeaveForm(FlaskForm):
     )
     leavestatus = HiddenField('Leave Status', default = 'Pending')
     submit = SubmitField('Apply Leave')
+
+class action(FlaskForm):
+    leaveID = StringField('Leave ID : ', validators = [DataRequired()])
+    action = SelectField('Action : ', choices=[('Approved', 'Approved'), ('Denied', 'Denied')])
+    submit = SubmitField('Update leave')

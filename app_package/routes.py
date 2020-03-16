@@ -3,12 +3,12 @@ routing for my app
 """
 
 from flask import render_template, flash, redirect, url_for, request, session
-from app import app, db
-from app.forms import LoginForm, LeaveForm
-from app.models import StudentUser, FacultyUser, leaves, advisor
+from app_package import app, db
+from app_package.forms import LoginForm, LeaveForm, action
+from app_package.models import StudentUser, FacultyUser, leaves, advisor
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.table_results import Results
+from app_package.table_results import Results
 
 session = {}
 
@@ -27,8 +27,27 @@ def caution():
 	else:
 		return redirect(url_for('index'), name = session['user'])
 
+@app.route('/act_on_leave', methods = ['GET', 'POST'])
+def act_on_leave():
+	if not current_user.is_authenticated:
+		return render_template('caution.html', title='Caution')
+	elif session['type'] == 'student':
+		return render_template('caution.html', title='Caution')
+	form = action()
+	if form.validate_on_submit():
+		l = leaves.query.filter_by(id=form.leaveID.data).first()
+		l.leave_status=form.action.data
+		db.session.commit()
+		flash('The leave was acted upon succesfully.')
+		return redirect(url_for('faculty_dashboard'))
+	return render_template('act_on_leave.html', title = 'Act on Leave', form = form, name = session['user'])
+
 @app.route('/apply_leave', methods = ['GET', 'POST'])
 def apply_leave():
+	if not current_user.is_authenticated:
+		return render_template('caution.html', title='Caution')
+	elif session['type'] == 'faculty':
+		return render_template('caution.html', title='Caution')
 	form = LeaveForm()
 	fname = advisor.query.filter_by(student_username=session['user']).first().faculty_username
 	if form.validate_on_submit():
